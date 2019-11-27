@@ -63,7 +63,18 @@
 }
 
 - (float)triangle:(float)time {
-    return 0;
+    double period = 1.0 / self.frequency;
+    double currentTime = fmod(time, period);
+    double value = currentTime / period;
+    double result = 0;
+    if (value < 0.25) {
+        result = value * 4;
+    } else if (value < 0.75) {
+        result = 2.0 - (value * 4.0);
+    } else {
+        result = value * 4 - 4.0;
+    }
+    return self.amplitude * result;
 }
 
 - (float)sawtooth:(float)time {
