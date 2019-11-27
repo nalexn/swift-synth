@@ -13,6 +13,14 @@ class SynthViewController: UIViewController {
 
 		return label
     }()
+    
+    private lazy var isPlayingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.text = "Playing..."
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
         
     private lazy var waveformSelectorSegmentedControl: UISegmentedControl = {
         var images = [#imageLiteral(resourceName: "Sine Wave Icon"), #imageLiteral(resourceName: "Triangle Wave Icon"), #imageLiteral(resourceName: "Sawtooth Wave Icon"), #imageLiteral(resourceName: "Square Wave Icon"), #imageLiteral(resourceName: "Noise Wave Icon")]
@@ -35,6 +43,8 @@ class SynthViewController: UIViewController {
 
 		setUpView()
         setUpSubviews()
+        
+        setPlaybackStateTo(false)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,6 +82,7 @@ class SynthViewController: UIViewController {
     
     @objc private func setPlaybackStateTo(_ state: Bool) {
         synth.volume = state ? 0.5 : 0
+        isPlayingLabel.isHidden = !state
     }
     
     private func setUpView() {
@@ -80,7 +91,7 @@ class SynthViewController: UIViewController {
     }
     
     private func setUpSubviews() {
-        view.add(waveformSelectorSegmentedControl, parameterLabel)
+        view.add(waveformSelectorSegmentedControl, parameterLabel, isPlayingLabel)
         
         NSLayoutConstraint.activate([
             waveformSelectorSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -88,7 +99,10 @@ class SynthViewController: UIViewController {
             waveformSelectorSegmentedControl.widthAnchor.constraint(equalToConstant: 250),
             
             parameterLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            parameterLabel.centerYAnchor.constraint(equalTo: waveformSelectorSegmentedControl.centerYAnchor)
+            parameterLabel.centerYAnchor.constraint(equalTo: waveformSelectorSegmentedControl.centerYAnchor),
+            
+            isPlayingLabel.topAnchor.constraint(equalTo: parameterLabel.bottomAnchor, constant: 10),
+            isPlayingLabel.centerXAnchor.constraint(equalTo: parameterLabel.centerXAnchor)
         ])
     }
     
