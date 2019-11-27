@@ -19,6 +19,7 @@
 		DB7A8236238817320075C7C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DB7A8235238817320075C7C1 /* README.md */; };
 		F640581D238EF6FB0029D9BA /* OscillatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F640581C238EF6FB0029D9BA /* OscillatorTests.swift */; };
 		F6405828238EF78D0029D9BA /* OscillatorObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = F6405827238EF78D0029D9BA /* OscillatorObjC.m */; };
+		F640582B238F012E0029D9BA /* SynthObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = F640582A238F012E0029D9BA /* SynthObjC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		F6405825238EF78D0029D9BA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F6405826238EF78D0029D9BA /* OscillatorObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscillatorObjC.h; sourceTree = "<group>"; };
 		F6405827238EF78D0029D9BA /* OscillatorObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OscillatorObjC.m; sourceTree = "<group>"; };
+		F6405829238F012E0029D9BA /* SynthObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthObjC.h; sourceTree = "<group>"; };
+		F640582A238F012E0029D9BA /* SynthObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SynthObjC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 		F6405824238EF7690029D9BA /* AudioObjC */ = {
 			isa = PBXGroup;
 			children = (
+				F6405829238F012E0029D9BA /* SynthObjC.h */,
+				F640582A238F012E0029D9BA /* SynthObjC.m */,
 				F6405826238EF78D0029D9BA /* OscillatorObjC.h */,
 				F6405827238EF78D0029D9BA /* OscillatorObjC.m */,
 			);
@@ -271,6 +276,7 @@
 				55FB1E6322EE0B8700AED3D2 /* UIColor+Set.swift in Sources */,
 				550D025622E53233002C57C9 /* UIView+Add.swift in Sources */,
 				550D024622E526DD002C57C9 /* SynthViewController.swift in Sources */,
+				F640582B238F012E0029D9BA /* SynthObjC.m in Sources */,
 				550D024222E526DD002C57C9 /* AppDelegate.swift in Sources */,
 				550D025E22E557A5002C57C9 /* Oscillator.swift in Sources */,
 				F6405828238EF78D0029D9BA /* OscillatorObjC.m in Sources */,
