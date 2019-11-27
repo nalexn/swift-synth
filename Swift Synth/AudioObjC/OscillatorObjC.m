@@ -78,7 +78,9 @@
 }
 
 - (float)sawtooth:(float)time {
-    return 0;
+    float period = 1.0 / self.frequency;
+    float currentTime = fmod(time, period);
+    return (currentTime / period * 2.0 - 1.0) * self.amplitude;
 }
 
 - (float)square:(float)time {

@@ -23,6 +23,12 @@ class OscillatorTests: XCTestCase {
         verify(sut: sut, sample: sample)
     }
     
+    func testSawtooth() {
+        let sut = OscillatorObjC(waveform: .sawtooth)
+        let sample = Oscillator.sawtooth
+        verify(sut: sut, sample: sample)
+    }
+    
     func verify(sut: OscillatorObjC, sample: Signal, file: StaticString = #file, line: UInt = #line) {
         for time in stride(from: Float(0), to: 1, by: 0.005) {
             XCTAssertEqual(sut.value(forTime: time), sample(time), accuracy: 0.001, file: file, line: line)
