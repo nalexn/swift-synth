@@ -90,7 +90,8 @@
 }
 
 - (float)whiteNoise:(float)time {
-    return 0;
+    float random01 = (float)arc4random() / UINT32_MAX;
+    return self.amplitude * (random01 - 0.5) * 2;
 }
 
 @end
