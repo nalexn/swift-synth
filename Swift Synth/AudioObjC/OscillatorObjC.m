@@ -84,7 +84,9 @@
 }
 
 - (float)square:(float)time {
-    return 0;
+    double period = 1.0 / self.frequency;
+    double currentTime = fmod(time, period);
+    return ((currentTime / period) < 0.5) ? self.amplitude : -self.amplitude;
 }
 
 - (float)whiteNoise:(float)time {
