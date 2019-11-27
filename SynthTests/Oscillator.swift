@@ -3,10 +3,6 @@ import Foundation
 
 typealias Signal = (Float) -> (Float)
 
-enum Waveform: Int {
-    case sine, triangle, sawtooth, square, whiteNoise
-}
-
 struct Oscillator {
 	static var amplitude: Float = 1
     static var frequency: Float = 440

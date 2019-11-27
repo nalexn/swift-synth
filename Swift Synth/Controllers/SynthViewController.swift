@@ -3,6 +3,8 @@ import UIKit
 
 class SynthViewController: UIViewController {
     
+    private lazy var synth = SynthObjC(oscillator: OscillatorObjC(waveform: .sine))
+    
     private lazy var parameterLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -10,6 +12,14 @@ class SynthViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
 
 		return label
+    }()
+    
+    private lazy var isPlayingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.text = "Playing..."
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
         
     private lazy var waveformSelectorSegmentedControl: UISegmentedControl = {
@@ -33,6 +43,8 @@ class SynthViewController: UIViewController {
 
 		setUpView()
         setUpSubviews()
+        
+        setPlaybackStateTo(false)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -65,17 +77,12 @@ class SynthViewController: UIViewController {
     
     @objc private func updateOscillatorWaveform() {
         let waveform = Waveform(rawValue: waveformSelectorSegmentedControl.selectedSegmentIndex)!
-        switch waveform {
-            case .sine: Synth.shared.setWaveformTo(Oscillator.sine)
-            case .triangle: Synth.shared.setWaveformTo(Oscillator.triangle)
-            case .sawtooth: Synth.shared.setWaveformTo(Oscillator.sawtooth)
-            case .square: Synth.shared.setWaveformTo(Oscillator.square)
-            case .whiteNoise: Synth.shared.setWaveformTo(Oscillator.whiteNoise)
-        }
+        synth.oscillator = OscillatorObjC(waveform: waveform)
     }
     
     @objc private func setPlaybackStateTo(_ state: Bool) {
-        Synth.shared.volume = state ? 0.5 : 0
+        synth.volume = state ? 0.5 : 0
+        isPlayingLabel.isHidden = !state
     }
     
     private func setUpView() {
@@ -84,7 +91,7 @@ class SynthViewController: UIViewController {
     }
     
     private func setUpSubviews() {
-        view.add(waveformSelectorSegmentedControl, parameterLabel)
+        view.add(waveformSelectorSegmentedControl, parameterLabel, isPlayingLabel)
         
         NSLayoutConstraint.activate([
             waveformSelectorSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -92,16 +99,20 @@ class SynthViewController: UIViewController {
             waveformSelectorSegmentedControl.widthAnchor.constraint(equalToConstant: 250),
             
             parameterLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            parameterLabel.centerYAnchor.constraint(equalTo: waveformSelectorSegmentedControl.centerYAnchor)
+            parameterLabel.centerYAnchor.constraint(equalTo: waveformSelectorSegmentedControl.centerYAnchor),
+            
+            isPlayingLabel.topAnchor.constraint(equalTo: parameterLabel.bottomAnchor, constant: 10),
+            isPlayingLabel.centerXAnchor.constraint(equalTo: parameterLabel.centerXAnchor)
         ])
     }
     
     private func setSynthParametersFrom(_ coord: CGPoint) {
-        Oscillator.amplitude = Float((view.bounds.height - coord.y) / view.bounds.height) 
-        Oscillator.frequency = Float(coord.x / view.bounds.width) * 1014 + 32
+        let oscillator = synth.oscillator
+        oscillator.amplitude = Float((view.bounds.height - coord.y) / view.bounds.height)
+        oscillator.frequency = Float(coord.x / view.bounds.width) * 1014 + 32
         
-        let amplitudePercent = Int(Oscillator.amplitude * 100)
-        let frequencyHertz = Int(Oscillator.frequency)
+        let amplitudePercent = Int(oscillator.amplitude * 100)
+        let frequencyHertz = Int(oscillator.frequency)
         parameterLabel.text = "Frequency: \(frequencyHertz) Hz  Amplitude: \(amplitudePercent)%"
     }
 }
