@@ -58,7 +58,8 @@
 @implementation OscillatorObjC (Private)
 
 - (float)sine:(float)time {
-    return 0;
+    double frame = self.frequency * time;
+    return self.amplitude * sin(frame * 2.0 * M_PI);
 }
 
 - (float)triangle:(float)time {
