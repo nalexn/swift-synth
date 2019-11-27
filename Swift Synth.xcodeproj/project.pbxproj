@@ -17,7 +17,18 @@
 		550D025E22E557A5002C57C9 /* Oscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D025D22E557A5002C57C9 /* Oscillator.swift */; };
 		55FB1E6322EE0B8700AED3D2 /* UIColor+Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB1E6222EE0B8700AED3D2 /* UIColor+Set.swift */; };
 		DB7A8236238817320075C7C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DB7A8235238817320075C7C1 /* README.md */; };
+		F640581D238EF6FB0029D9BA /* OscillatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F640581C238EF6FB0029D9BA /* OscillatorTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F640581F238EF6FB0029D9BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 550D023622E526DD002C57C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 550D023D22E526DD002C57C9;
+			remoteInfo = "Swift Synth";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		550D023E22E526DD002C57C9 /* Swift Synth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Synth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,10 +43,20 @@
 		550D025D22E557A5002C57C9 /* Oscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
 		55FB1E6222EE0B8700AED3D2 /* UIColor+Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Set.swift"; sourceTree = "<group>"; };
 		DB7A8235238817320075C7C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F640581A238EF6FB0029D9BA /* SynthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SynthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F640581C238EF6FB0029D9BA /* OscillatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OscillatorTests.swift; sourceTree = "<group>"; };
+		F640581E238EF6FB0029D9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		550D023B22E526DD002C57C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6405817238EF6FB0029D9BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +71,7 @@
 			children = (
 				DB7A8235238817320075C7C1 /* README.md */,
 				550D024022E526DD002C57C9 /* Swift Synth */,
+				F640581B238EF6FB0029D9BA /* SynthTests */,
 				550D023F22E526DD002C57C9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				550D023E22E526DD002C57C9 /* Swift Synth.app */,
+				F640581A238EF6FB0029D9BA /* SynthTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,6 +142,15 @@
 			path = "UIColor Extensions";
 			sourceTree = "<group>";
 		};
+		F640581B238EF6FB0029D9BA /* SynthTests */ = {
+			isa = PBXGroup;
+			children = (
+				F640581C238EF6FB0029D9BA /* OscillatorTests.swift */,
+				F640581E238EF6FB0029D9BA /* Info.plist */,
+			);
+			path = SynthTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,18 +171,40 @@
 			productReference = 550D023E22E526DD002C57C9 /* Swift Synth.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F6405819238EF6FB0029D9BA /* SynthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6405823238EF6FB0029D9BA /* Build configuration list for PBXNativeTarget "SynthTests" */;
+			buildPhases = (
+				F6405816238EF6FB0029D9BA /* Sources */,
+				F6405817238EF6FB0029D9BA /* Frameworks */,
+				F6405818238EF6FB0029D9BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6405820238EF6FB0029D9BA /* PBXTargetDependency */,
+			);
+			name = SynthTests;
+			productName = SynthTests;
+			productReference = F640581A238EF6FB0029D9BA /* SynthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		550D023622E526DD002C57C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Grant Emerson";
 				TargetAttributes = {
 					550D023D22E526DD002C57C9 = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					F6405819238EF6FB0029D9BA = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 550D023D22E526DD002C57C9;
 					};
 				};
 			};
@@ -168,6 +222,7 @@
 			projectRoot = "";
 			targets = (
 				550D023D22E526DD002C57C9 /* Swift Synth */,
+				F6405819238EF6FB0029D9BA /* SynthTests */,
 			);
 		};
 /* End PBXProject section */
@@ -180,6 +235,13 @@
 				DB7A8236238817320075C7C1 /* README.md in Resources */,
 				550D024E22E526DE002C57C9 /* LaunchScreen.storyboard in Resources */,
 				550D024B22E526DE002C57C9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6405818238EF6FB0029D9BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +262,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6405816238EF6FB0029D9BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F640581D238EF6FB0029D9BA /* OscillatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6405820238EF6FB0029D9BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 550D023D22E526DD002C57C9 /* Swift Synth */;
+			targetProxy = F640581F238EF6FB0029D9BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		550D024C22E526DE002C57C9 /* LaunchScreen.storyboard */ = {
@@ -364,6 +442,48 @@
 			};
 			name = Release;
 		};
+		F6405821238EF6FB0029D9BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J6H9A24BCA;
+				INFOPLIST_FILE = SynthTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pictural.ai.example.SynthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift Synth.app/Swift Synth";
+			};
+			name = Debug;
+		};
+		F6405822238EF6FB0029D9BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J6H9A24BCA;
+				INFOPLIST_FILE = SynthTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = pictural.ai.example.SynthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift Synth.app/Swift Synth";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -381,6 +501,15 @@
 			buildConfigurations = (
 				550D025322E526DE002C57C9 /* Debug */,
 				550D025422E526DE002C57C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6405823238EF6FB0029D9BA /* Build configuration list for PBXNativeTarget "SynthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6405821238EF6FB0029D9BA /* Debug */,
+				F6405822238EF6FB0029D9BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
