@@ -48,4 +48,36 @@
     return self;
 }
 
+- (float)volume {
+    return _audioEngine.mainMixerNode.outputVolume;
+}
+
+- (void)setVolume:(float)volume {
+    _audioEngine.mainMixerNode.outputVolume = volume;
+}
+
+- (AVAudioSourceNode *)sourceNode {
+    if (_sourceNode == nil) {
+        __weak __typeof(self) weakSelf = self;
+        _sourceNode = [[AVAudioSourceNode alloc] initWithRenderBlock:
+                       ^OSStatus(BOOL * _Nonnull isSilence,
+                                 const AudioTimeStamp * _Nonnull timestamp,
+                                 AVAudioFrameCount frameCount,
+                                 AudioBufferList * _Nonnull outputData) {
+            __typeof(weakSelf) strongSelf = weakSelf;
+            if (strongSelf == nil) { return 1; }
+            for (AVAudioFrameCount frame = 0; frame < frameCount; ++frame) {
+                float sampleVal = [self.oscillator valueForTime: self.time];
+                self.time += self.deltaTime;
+                for (int index = 0; index < outputData->mNumberBuffers; ++index) {
+                    float *data = outputData->mBuffers[index].mData;
+                    data[frame] = sampleVal;
+                }
+            }
+            return noErr;
+        }];
+    }
+    return _sourceNode;
+}
+
 @end
