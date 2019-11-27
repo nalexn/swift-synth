@@ -18,6 +18,7 @@
 		55FB1E6322EE0B8700AED3D2 /* UIColor+Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FB1E6222EE0B8700AED3D2 /* UIColor+Set.swift */; };
 		DB7A8236238817320075C7C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DB7A8235238817320075C7C1 /* README.md */; };
 		F640581D238EF6FB0029D9BA /* OscillatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F640581C238EF6FB0029D9BA /* OscillatorTests.swift */; };
+		F6405828238EF78D0029D9BA /* OscillatorObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = F6405827238EF78D0029D9BA /* OscillatorObjC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,9 @@
 		F640581A238EF6FB0029D9BA /* SynthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SynthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F640581C238EF6FB0029D9BA /* OscillatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OscillatorTests.swift; sourceTree = "<group>"; };
 		F640581E238EF6FB0029D9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6405825238EF78D0029D9BA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F6405826238EF78D0029D9BA /* OscillatorObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscillatorObjC.h; sourceTree = "<group>"; };
+		F6405827238EF78D0029D9BA /* OscillatorObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OscillatorObjC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +95,13 @@
 				550D024122E526DD002C57C9 /* AppDelegate.swift */,
 				550D024322E526DD002C57C9 /* SceneDelegate.swift */,
 				550D025922E556AB002C57C9 /* Controllers */,
+				F6405824238EF7690029D9BA /* AudioObjC */,
 				550D025A22E556BA002C57C9 /* Audio */,
 				550D025B22E556C0002C57C9 /* Extensions */,
 				550D024A22E526DE002C57C9 /* Assets.xcassets */,
 				550D024C22E526DE002C57C9 /* LaunchScreen.storyboard */,
 				550D024F22E526DE002C57C9 /* Info.plist */,
+				F6405825238EF78D0029D9BA /* Bridging-Header.h */,
 			);
 			path = "Swift Synth";
 			sourceTree = "<group>";
@@ -151,6 +157,15 @@
 			path = SynthTests;
 			sourceTree = "<group>";
 		};
+		F6405824238EF7690029D9BA /* AudioObjC */ = {
+			isa = PBXGroup;
+			children = (
+				F6405826238EF78D0029D9BA /* OscillatorObjC.h */,
+				F6405827238EF78D0029D9BA /* OscillatorObjC.m */,
+			);
+			path = AudioObjC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,6 +216,7 @@
 				TargetAttributes = {
 					550D023D22E526DD002C57C9 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1120;
 					};
 					F6405819238EF6FB0029D9BA = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -257,6 +273,7 @@
 				550D024622E526DD002C57C9 /* SynthViewController.swift in Sources */,
 				550D024222E526DD002C57C9 /* AppDelegate.swift in Sources */,
 				550D025E22E557A5002C57C9 /* Oscillator.swift in Sources */,
+				F6405828238EF78D0029D9BA /* OscillatorObjC.m in Sources */,
 				550D025822E55477002C57C9 /* Synth.swift in Sources */,
 				550D024422E526DD002C57C9 /* SceneDelegate.swift in Sources */,
 			);
@@ -410,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = URG8NKU79W;
 				INFOPLIST_FILE = "Swift Synth/Info.plist";
@@ -419,6 +437,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pictural.ai.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift Synth/Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -428,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = URG8NKU79W;
 				INFOPLIST_FILE = "Swift Synth/Info.plist";
@@ -437,6 +458,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pictural.ai.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift Synth/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
